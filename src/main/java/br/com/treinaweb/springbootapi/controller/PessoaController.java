@@ -8,18 +8,18 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.treinaweb.springbootapi.entity.Pessoa;
+import br.com.treinaweb.springbootapi.repository.PessoaRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
-import br.com.treinaweb.springbootapi.entity.Pessoa;
-import br.com.treinaweb.springbootapi.repository.PessoaRepository;
 
 @RestController
 public class PessoaController {
@@ -33,6 +33,7 @@ public class PessoaController {
         @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
         @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/pessoa", method = RequestMethod.GET, produces="application/json")
     public List<Pessoa> Get() {
         return _pessoaRepository.findAll();
