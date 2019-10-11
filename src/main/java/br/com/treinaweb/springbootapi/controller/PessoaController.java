@@ -38,6 +38,8 @@ public class PessoaController {
         return _pessoaRepository.findAll();
     }
 
+    
+    @ApiOperation(value = "Retorna uma pessoa baseada em seu id")
     @RequestMapping(value = "/pessoa/{id}", method = RequestMethod.GET, produces="application/json")
     public ResponseEntity<Pessoa> GetById(@PathVariable(value = "id") long id)
     {
